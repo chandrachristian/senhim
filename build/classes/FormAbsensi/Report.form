@@ -35,9 +35,6 @@
   </NonVisualComponents>
   <Properties>
     <Property name="defaultCloseOperation" type="int" value="3"/>
-    <Property name="iconImage" type="java.awt.Image" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
-      <Connection code="new javax.swing.ImageIcon(getClass().getResource(&quot;/Image/him200.png&quot;)).getImage()&#xd;&#xa;" type="code"/>
-    </Property>
   </Properties>
   <SyntheticProperties>
     <SyntheticProperty name="formSizePolicy" type="int" value="1"/>
@@ -194,34 +191,10 @@
                         <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.editors2.TableModelEditor">
                           <Table columnCount="4" rowCount="0">
                             <Column editable="true" title="No" type="java.lang.Object"/>
-                            <Column editable="true" title="ID" type="java.lang.Object"/>
+                            <Column editable="true" title="NIP" type="java.lang.Object"/>
                             <Column editable="true" title="Nama" type="java.lang.Object"/>
-                            <Column editable="true" title="Jabatan" type="java.lang.Object"/>
+                            <Column editable="true" title="Posisi" type="java.lang.Object"/>
                           </Table>
-                        </Property>
-                        <Property name="columnModel" type="javax.swing.table.TableColumnModel" editor="org.netbeans.modules.form.editors2.TableColumnModelEditor">
-                          <TableColumnModel selectionModel="0">
-                            <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
-                              <Title/>
-                              <Editor/>
-                              <Renderer/>
-                            </Column>
-                            <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
-                              <Title/>
-                              <Editor/>
-                              <Renderer/>
-                            </Column>
-                            <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
-                              <Title/>
-                              <Editor/>
-                              <Renderer/>
-                            </Column>
-                            <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
-                              <Title/>
-                              <Editor/>
-                              <Renderer/>
-                            </Column>
-                          </TableColumnModel>
                         </Property>
                         <Property name="tableHeader" type="javax.swing.table.JTableHeader" editor="org.netbeans.modules.form.editors2.JTableHeaderEditor">
                           <TableHeader reorderingAllowed="true" resizingAllowed="true"/>
@@ -279,14 +252,22 @@
                           <EmptySpace max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" attributes="0">
                               <Group type="102" attributes="0">
-                                  <Component id="txtCari" min="-2" pref="153" max="-2" attributes="0"/>
+                                  <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                                      <Component id="Tanggal1" pref="153" max="32767" attributes="0"/>
+                                      <Component id="txtCari" max="32767" attributes="0"/>
+                                  </Group>
                                   <EmptySpace min="-2" pref="33" max="-2" attributes="0"/>
-                                  <Component id="jButton1" min="-2" max="-2" attributes="0"/>
-                                  <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                                  <Component id="jButton2" min="-2" max="-2" attributes="0"/>
+                                  <Group type="103" groupAlignment="0" attributes="0">
+                                      <Component id="Tanggal2" alignment="0" min="-2" pref="153" max="-2" attributes="0"/>
+                                      <Group type="102" alignment="0" attributes="0">
+                                          <Component id="jButton1" min="-2" max="-2" attributes="0"/>
+                                          <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                                          <Component id="jButton2" min="-2" max="-2" attributes="0"/>
+                                      </Group>
+                                  </Group>
                                   <EmptySpace min="0" pref="336" max="32767" attributes="0"/>
                               </Group>
-                              <Component id="jScrollPane2" pref="700" max="32767" attributes="0"/>
+                              <Component id="jScrollPane2" pref="675" max="32767" attributes="0"/>
                           </Group>
                           <EmptySpace max="-2" attributes="0"/>
                       </Group>
@@ -301,14 +282,35 @@
                               <Component id="jButton1" alignment="3" min="-2" max="-2" attributes="0"/>
                               <Component id="jButton2" alignment="3" min="-2" max="-2" attributes="0"/>
                           </Group>
-                          <EmptySpace min="-2" pref="42" max="-2" attributes="0"/>
+                          <EmptySpace max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="0" attributes="0">
+                              <Component id="Tanggal2" min="-2" max="-2" attributes="0"/>
+                              <Component id="Tanggal1" min="-2" max="-2" attributes="0"/>
+                          </Group>
+                          <EmptySpace type="separate" max="-2" attributes="0"/>
                           <Component id="jScrollPane2" min="-2" pref="210" max="-2" attributes="0"/>
-                          <EmptySpace pref="20" max="32767" attributes="0"/>
+                          <EmptySpace pref="21" max="32767" attributes="0"/>
                       </Group>
                   </Group>
                 </DimensionLayout>
               </Layout>
               <SubComponents>
+                <Component class="com.toedter.calendar.JDateChooser" name="Tanggal1">
+                  <Properties>
+                    <Property name="dateFormatString" type="java.lang.String" value="dd-MMM-yyyy"/>
+                  </Properties>
+                  <Events>
+                    <EventHandler event="propertyChange" listener="java.beans.PropertyChangeListener" parameters="java.beans.PropertyChangeEvent" handler="Tanggal1PropertyChange"/>
+                  </Events>
+                </Component>
+                <Component class="com.toedter.calendar.JDateChooser" name="Tanggal2">
+                  <Properties>
+                    <Property name="dateFormatString" type="java.lang.String" value="dd-MMM-yyyy"/>
+                  </Properties>
+                  <Events>
+                    <EventHandler event="propertyChange" listener="java.beans.PropertyChangeListener" parameters="java.beans.PropertyChangeEvent" handler="Tanggal2PropertyChange"/>
+                  </Events>
+                </Component>
                 <Container class="javax.swing.JScrollPane" name="jScrollPane2">
                   <AuxValues>
                     <AuxValue name="autoScrollPane" type="java.lang.Boolean" value="true"/>
@@ -325,8 +327,8 @@
                           <Table columnCount="7" rowCount="0">
                             <Column editable="true" title="NIP" type="java.lang.Object"/>
                             <Column editable="true" title="Nama" type="java.lang.Object"/>
-                            <Column editable="true" title="Jabatan" type="java.lang.Object"/>
-                            <Column editable="true" title="Divisi" type="java.lang.Object"/>
+                            <Column editable="true" title="Posisi" type="java.lang.Object"/>
+                            <Column editable="true" title="Mapel" type="java.lang.Object"/>
                             <Column editable="true" title="Absen" type="java.lang.Object"/>
                             <Column editable="true" title="Tanggal Absen" type="java.lang.Object"/>
                             <Column editable="true" title="Jam" type="java.lang.Object"/>
@@ -396,9 +398,6 @@
                   <Properties>
                     <Property name="text" type="java.lang.String" value="Print"/>
                   </Properties>
-                  <Events>
-                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton2ActionPerformed"/>
-                  </Events>
                 </Component>
               </SubComponents>
             </Container>
@@ -406,7 +405,7 @@
         </Container>
         <Component class="javax.swing.JButton" name="jButton3">
           <Properties>
-            <Property name="text" type="java.lang.String" value="exit"/>
+            <Property name="text" type="java.lang.String" value="Exit"/>
           </Properties>
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton3ActionPerformed"/>

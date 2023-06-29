@@ -6,10 +6,12 @@
 
 package FormAbsensi;
 
+import Konektor.Koneksi;
 import java.awt.HeadlessException;
 import java.io.File;
 import java.sql.Connection;
 import java.sql.DriverManager;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
@@ -79,8 +81,8 @@ DefaultTableModel  model;
         DefaultTableModel tbl = new DefaultTableModel();
         tbl.addColumn("NIP");
         tbl.addColumn("Nama");
-        tbl.addColumn("Posisi");
-        tbl.addColumn("Mapel");
+        tbl.addColumn("Jabatan");
+        tbl.addColumn("Divisi");
         
         try {
             String sql = "SELECT * FROM tbPersonal WHERE NIP like '%"+ Cari.getText() +"%'";
@@ -92,8 +94,8 @@ DefaultTableModel  model;
                 tbl.addRow(new Object[]{
                     rs.getString("NIP"),
                     rs.getString("Nama"),
-                    rs.getString("Posisi"),
-                    rs.getString("Mapel")
+                    rs.getString("Jabatan"),
+                    rs.getString("Divisi")
                 });
                 Table1.setModel(tbl);
             }
@@ -127,8 +129,8 @@ private void Tampil(){
         DefaultTableModel tbl = new DefaultTableModel();
         tbl.addColumn("NIP");
         tbl.addColumn("Nama");
-        tbl.addColumn("Posisi");
-        tbl.addColumn("Mapel");
+        tbl.addColumn("Jabatan");
+        tbl.addColumn("Divisi");
         tbl.addColumn("Absen");
         tbl.addColumn("Tanggal Absen");
         tbl.addColumn("Jam");
@@ -150,8 +152,8 @@ private void Tampil(){
                 tbl.addRow(new Object[]{
                     rs.getString("NIP"),
                     rs.getString("Nama"),
-                    rs.getString("Posisi"),
-                    rs.getString("Mapel"),
+                    rs.getString("Jabatan"),
+                    rs.getString("Divisi"),
                     rs.getString("Absen"),
                     rs.getString("Tanggal_Absen"),
                     rs.getString("Jam")
@@ -184,6 +186,8 @@ private void Tampil(){
         btnCari = new javax.swing.JButton();
         jButton5 = new javax.swing.JButton();
         jPanel2 = new javax.swing.JPanel();
+        Tanggal1 = new com.toedter.calendar.JDateChooser();
+        Tanggal2 = new com.toedter.calendar.JDateChooser();
         jScrollPane2 = new javax.swing.JScrollPane();
         Table = new javax.swing.JTable();
         txtCari = new javax.swing.JTextField();
@@ -204,8 +208,6 @@ private void Tampil(){
         jScrollPane1.setViewportView(jTable1);
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setIconImage(new javax.swing.ImageIcon(getClass().getResource("/Image/him200.png")).getImage()
-        );
 
         jPanel6.setBackground(new java.awt.Color(2, 47, 127));
         jPanel6.setPreferredSize(new java.awt.Dimension(700, 400));
@@ -221,7 +223,7 @@ private void Tampil(){
 
             },
             new String [] {
-                "No", "ID", "Nama", "Jabatan"
+                "No", "NIP", "Nama", "Posisi"
             }
         ));
         Table1.addAncestorListener(new javax.swing.event.AncestorListener() {
@@ -301,13 +303,27 @@ private void Tampil(){
 
         jTabbedPane1.addTab("Data Pegawai", jPanel1);
 
+        Tanggal1.setDateFormatString("dd-MMM-yyyy");
+        Tanggal1.addPropertyChangeListener(new java.beans.PropertyChangeListener() {
+            public void propertyChange(java.beans.PropertyChangeEvent evt) {
+                Tanggal1PropertyChange(evt);
+            }
+        });
+
+        Tanggal2.setDateFormatString("dd-MMM-yyyy");
+        Tanggal2.addPropertyChangeListener(new java.beans.PropertyChangeListener() {
+            public void propertyChange(java.beans.PropertyChangeEvent evt) {
+                Tanggal2PropertyChange(evt);
+            }
+        });
+
         Table.setFont(new java.awt.Font("Georgia", 0, 12)); // NOI18N
         Table.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
             },
             new String [] {
-                "NIP", "Nama", "Jabatan", "Divisi", "Absen", "Tanggal Absen", "Jam"
+                "NIP", "Nama", "Posisi", "Mapel", "Absen", "Tanggal Absen", "Jam"
             }
         ));
         Table.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -330,11 +346,6 @@ private void Tampil(){
         });
 
         jButton2.setText("Print");
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
-            }
-        });
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -344,13 +355,18 @@ private void Tampil(){
                 .addContainerGap()
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addComponent(txtCari, javax.swing.GroupLayout.PREFERRED_SIZE, 153, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(Tanggal1, javax.swing.GroupLayout.DEFAULT_SIZE, 153, Short.MAX_VALUE)
+                            .addComponent(txtCari))
                         .addGap(33, 33, 33)
-                        .addComponent(jButton1)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jButton2)
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(Tanggal2, javax.swing.GroupLayout.PREFERRED_SIZE, 153, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(jPanel2Layout.createSequentialGroup()
+                                .addComponent(jButton1)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(jButton2)))
                         .addGap(0, 336, Short.MAX_VALUE))
-                    .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 700, Short.MAX_VALUE))
+                    .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 675, Short.MAX_VALUE))
                 .addContainerGap())
         );
         jPanel2Layout.setVerticalGroup(
@@ -361,14 +377,18 @@ private void Tampil(){
                     .addComponent(txtCari, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jButton1)
                     .addComponent(jButton2))
-                .addGap(42, 42, 42)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(Tanggal2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(Tanggal1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
                 .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 210, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(20, Short.MAX_VALUE))
+                .addContainerGap(21, Short.MAX_VALUE))
         );
 
         jTabbedPane1.addTab("Rekap Absen", jPanel2);
 
-        jButton3.setText("exit");
+        jButton3.setText("Exit");
         jButton3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton3ActionPerformed(evt);
@@ -437,7 +457,7 @@ private void Tampil(){
         // TODO add your handling code here:
         Cari();
 
-        /*int row=model.getRowCount();
+        /*    int row=model.getRowCount();
         for(int i=0;i<row;i++){
             model.removeRow(0);
         } try {
@@ -491,7 +511,7 @@ private void Tampil(){
         try{
             HashMap parameter = new HashMap();
             Class.forName("com.mysql.jdbc.Driver");
-            Connection cn = DriverManager.getConnection("jdbc:mysql:" + "///senhim", "root", "");File
+            Connection cn = DriverManager.getConnection("jdbc:mysql:" + "///pemrograman2", "root", "");File
             file = new File("C:\\Users\\user\\OneDrive\\Dokumen\\Kuliah\\_Sistem Informasi\\Semester 4\\Pemrograman Berorientasi Objek\\2 UAS\\Form-Absensi---Java-GUI\\src\\Report\\DataPegawai.jasper");
             
             JasperReport jr = (JasperReport) JRLoader.loadObject(file);
@@ -504,10 +524,6 @@ private void Tampil(){
             }
         
     }//GEN-LAST:event_jButton5ActionPerformed
-
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton2ActionPerformed
 
     
     /**
@@ -549,6 +565,8 @@ private void Tampil(){
     private javax.swing.JTextField Cari;
     private javax.swing.JTable Table;
     private javax.swing.JTable Table1;
+    private com.toedter.calendar.JDateChooser Tanggal1;
+    private com.toedter.calendar.JDateChooser Tanggal2;
     private javax.swing.JButton btnCari;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
@@ -565,24 +583,4 @@ private void Tampil(){
     private javax.swing.JTable jTable1;
     private javax.swing.JTextField txtCari;
     // End of variables declaration//GEN-END:variables
-
-    private static class Tanggal1 {
-
-        private static Object getDate() {
-            throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
-        }
-
-        public Tanggal1() {
-        }
-    }
-
-    private static class Tanggal2 {
-
-        private static Object getDate() {
-            throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
-        }
-
-        public Tanggal2() {
-        }
-    }
 }

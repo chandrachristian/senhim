@@ -102,8 +102,8 @@ public class InputData extends javax.swing.JFrame {
         DefaultTableModel tbl = new DefaultTableModel();
         tbl.addColumn("NIP");
         tbl.addColumn("Nama");
-        tbl.addColumn("Posisi");
-        tbl.addColumn("Mapel");
+        tbl.addColumn("Jabatan");
+        tbl.addColumn("Divisi");
         
         try {
             String sql = "SELECT * FROM tbPersonal WHERE NIP like '%"+ txtCari.getText() +"%'";
@@ -115,8 +115,8 @@ public class InputData extends javax.swing.JFrame {
                 tbl.addRow(new Object[]{
                     rs.getString("NIP"),
                     rs.getString("Nama"),
-                    rs.getString("Posisi"),
-                    rs.getString("Mapel")
+                    rs.getString("Jabatan"),
+                    rs.getString("Divisi")
                 });
                 Table.setModel(tbl);
             }

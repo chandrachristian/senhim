@@ -383,56 +383,47 @@ public class AbsensiMasuk extends javax.swing.JFrame {
 
     private void txtNIPKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtNIPKeyPressed
         // TODO add your handling code here:
-if(evt.getKeyCode()==KeyEvent.VK_ENTER){
-            try {
-                Connection conn = (Connection)Konektor.Koneksi.getKoneksi();
-                java.sql.Statement stm = conn.createStatement();
-                java.sql.ResultSet rs = stm.executeQuery("select*from tbpersonal where NIP='"+txtNIP.getText()+"'");
-                if(rs.next()){
-                    if(txtNIP.getText().equals("")){
-                        foto.setVisible(false);
-                        foto2.setVisible(false);
-                        foto3.setVisible(false);
-                        foto4.setVisible(false);
-                        panelFoto.setVisible(true);
-                    }else if(txtNIP.getText().equals("001")){
-                        foto.setVisible(true);
-                        foto2.setVisible(false);
-                        foto3.setVisible(false);
-                        foto4.setVisible(false);
-                        panelFoto.setVisible(false);
-                    }else if(txtNIP.getText().equals("002")){
-                        foto.setVisible(false);
-                        foto2.setVisible(true);
-                        foto3.setVisible(false);
-                        foto4.setVisible(false);
-                        panelFoto.setVisible(false);
-                    }else if(txtNIP.getText().equals("003")){
-                       foto.setVisible(false);
-                        foto2.setVisible(false);
-                        foto3.setVisible(true);
-                        foto4.setVisible(false);
-                        panelFoto.setVisible(false);
-                    }else if(txtNIP.getText().equals("004")){
-                        foto.setVisible(false);
-                        foto2.setVisible(false);
-                        foto3.setVisible(false);
-                        foto4.setVisible(true);
-                        panelFoto.setVisible(false);
-                    }
-                    nama.setText(rs.getString("Nama"));
-                    posisi.setText(rs.getString("Posisi"));
-                    mapel.setText(rs.getString("Mapel"));
-                    
-               
-                
-                }else{
-                    JOptionPane.showMessageDialog(null, "NIP Tidak Ditemukan");
-                }
-            } catch (Exception e) {
+if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
+    String nip = txtNIP.getText();
+    if (nip.isEmpty()) {
+        foto.setVisible(false);
+        foto2.setVisible(false);
+        foto3.setVisible(false);
+        foto4.setVisible(false);
+        panelFoto.setVisible(true);
+    } else {
+        int nipValue = Integer.parseInt(nip);
+        if (nipValue >= 1 && nipValue <= 4) {
+            foto.setVisible(nipValue == 1);
+            foto2.setVisible(nipValue == 2);
+            foto3.setVisible(nipValue == 3);
+            foto4.setVisible(nipValue == 4);
+            panelFoto.setVisible(false);
+        } else {
+            foto.setVisible(true);
+            foto2.setVisible(false);
+            foto3.setVisible(false);
+            foto4.setVisible(false);
+            panelFoto.setVisible(false);
+        }
+
+        try {
+            Connection conn = (Connection) Konektor.Koneksi.getKoneksi();
+            java.sql.Statement stm = conn.createStatement();
+            java.sql.ResultSet rs = stm.executeQuery("select * from tbpersonal where NIP='" + nip + "'");
+            if (rs.next()) {
+                nama.setText(rs.getString("Nama"));
+                posisi.setText(rs.getString("Jabatan"));
+                mapel.setText(rs.getString("Divisi"));
+            } else {
+                JOptionPane.showMessageDialog(null, "NIP Tidak Ditemukan");
             }
-            
+        } catch (Exception e) {
+            // Tangani exception jika terjadi
+        }
+    }
 }
+
     }//GEN-LAST:event_txtNIPKeyPressed
 
     private void jLabel2KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jLabel2KeyPressed
