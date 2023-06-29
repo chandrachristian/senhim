@@ -416,7 +416,7 @@ if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
                 posisi.setText(rs.getString("Jabatan"));
                 mapel.setText(rs.getString("Divisi"));
             } else {
-                JOptionPane.showMessageDialog(null, "NIP Tidak Ditemukan");
+                JOptionPane.showMessageDialog(null, "ID Anggota Tidak Ditemukan");
             }
         } catch (Exception e) {
             // Tangani exception jika terjadi
@@ -455,7 +455,7 @@ if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
          try {
              if((txtNIP.getText().equals("")))
              {
-                 JOptionPane.showMessageDialog(null, "Isi Kolom NIP Terlebih Dahulu");
+                 JOptionPane.showMessageDialog(null, "Isi Kolom ID Anggota Terlebih Dahulu");
              }else
              {
                  String sqlA = "SELECT * FROM tbMasuk WHERE NIP='"+txtNIP.getText()+"'AND Absen='"+cbAbsen.getSelectedItem()+"'AND Tanggal_Absen='"+tanggal.getText()+"'";
