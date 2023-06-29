@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.1.1
+-- version 5.2.0
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Waktu pembuatan: 17 Jan 2023 pada 05.44
--- Versi server: 10.4.22-MariaDB
--- Versi PHP: 7.4.27
+-- Generation Time: Jun 29, 2023 at 05:52 AM
+-- Server version: 10.4.27-MariaDB
+-- PHP Version: 7.4.33
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -18,34 +18,34 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `pemrograman2`
+-- Database: `senhim`
 --
 
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `tblogin`
+-- Table structure for table `tblogin`
 --
 
 CREATE TABLE `tblogin` (
   `username` varchar(20) NOT NULL,
   `password` varchar(15) NOT NULL,
   `nama` varchar(20) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Dumping data untuk tabel `tblogin`
+-- Dumping data for table `tblogin`
 --
 
 INSERT INTO `tblogin` (`username`, `password`, `nama`) VALUES
-('admin01', 'admin01', 'Ade Dwi Putra'),
-('admin02', 'admin02', 'Mas Juned'),
-('admin03', 'admin03', 'Aa Hasan');
+('admin01', 'admin01', 'Chandra Christian'),
+('admin02', 'admin02', 'Frisca'),
+('admin03', 'admin03', 'Yasmin');
 
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `tbmasuk`
+-- Table structure for table `tbmasuk`
 --
 
 CREATE TABLE `tbmasuk` (
@@ -56,44 +56,20 @@ CREATE TABLE `tbmasuk` (
   `Absen` varchar(10) DEFAULT NULL,
   `Tanggal_Absen` date NOT NULL,
   `Jam` time DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Dumping data untuk tabel `tbmasuk`
+-- Dumping data for table `tbmasuk`
 --
 
 INSERT INTO `tbmasuk` (`NIP`, `Nama`, `Posisi`, `Mapel`, `Absen`, `Tanggal_Absen`, `Jam`) VALUES
-('001', 'Ade Dwi Putra', 'Guru', 'Matematika', 'Masuk', '2022-11-15', '00:12:12'),
-('001', 'Ade Dwi Putra', 'Guru', 'Matematika', 'Pulang', '2022-11-15', '00:12:21'),
-('002', 'Junaedi Ahmad Basori', 'Guru', 'Bahasa Inggris', 'Masuk', '2022-11-15', '00:19:52'),
-('002', 'Junaedi Ahmad Basori', 'Guru', 'Bahasa Inggris', 'Pulang', '2022-11-15', '00:20:45'),
-('003', 'Dyta Puji Lestari', 'Guru', 'Bahasa Indonesia', 'Pulang', '2022-11-15', '00:20:51'),
-('003', 'Dyta Puji Lestari', 'Guru', 'Bahasa Indonesia', 'Masuk', '2022-11-15', '00:20:56'),
-('004', 'Hasan Maulana', 'Guru', 'Agama', 'Masuk', '2022-11-15', '13:12:19'),
-('004', 'Hasan Maulana', 'Guru', 'Agama', 'Pulang', '2022-11-15', '13:12:30'),
-('002', 'Junaedi Ahmad Basori', 'Guru', 'Bahasa Inggris', 'Masuk', '2022-11-16', '00:39:20'),
-('002', 'Junaedi Ahmad Basori', 'Guru', 'Bahasa Inggris', 'Pulang', '2022-11-16', '00:46:50'),
-('001', 'Ade Dwi Putra', 'Guru', 'Matematika', 'Masuk', '2022-12-06', '20:25:23'),
-('001', 'Ade Dwi Putra', 'Guru', 'Matematika', 'Pulang', '2022-12-06', '20:25:39'),
-('002', 'Junaedi Ahmad Basori', 'Guru', 'Bahasa Inggris', 'Masuk', '2022-12-06', '20:25:50'),
-('002', 'Junaedi Ahmad Basori', 'Guru', 'Bahasa Inggris', 'Pulang', '2022-12-06', '20:25:58'),
-('003', 'Dyta Puji Lestari', 'Guru', 'Bahasa Indonesia', 'Masuk', '2022-12-06', '20:26:08'),
-('003', 'Dyta Puji Lestari', 'Guru', 'Bahasa Indonesia', 'Pulang', '2022-12-06', '20:26:41'),
-('004', 'Hasan Maulana', 'Guru', 'Agama', 'Masuk', '2022-12-06', '20:26:47'),
-('004', 'Hasan Maulana', 'Guru', 'Agama', 'Pulang', '2022-12-06', '20:26:51'),
-('001', 'Ade Dwi Putra', 'Guru', 'Matematika', 'Masuk', '2022-12-07', '16:12:05'),
-('001', 'Ade Dwi Putra', 'Guru', 'Matematika', 'Pulang', '2022-12-07', '16:12:10'),
-('002', 'Junaedi Ahmad Basori', 'Guru', 'Bahasa Inggris', 'Pulang', '2022-12-07', '16:12:15'),
-('002', 'Junaedi Ahmad Basori', 'Guru', 'Bahasa Inggris', 'Masuk', '2022-12-07', '16:12:20'),
-('003', 'Dyta Puji Lestari', 'Guru', 'Bahasa Indonesia', 'Masuk', '2022-12-07', '16:12:24'),
-('003', 'Dyta Puji Lestari', 'Guru', 'Bahasa Indonesia', 'Pulang', '2022-12-07', '16:12:30'),
-('004', 'Hasan Maulana', 'Guru', 'Agama', 'Pulang', '2022-12-07', '16:12:37'),
-('004', 'Hasan Maulana', 'Guru', 'Agama', 'Masuk', '2022-12-07', '16:12:44');
+('001', 'Chandra', 'Ketua Umum', 'BPH', 'Masuk', '2023-06-29', '08:11:06'),
+('001', 'Chandra', 'Ketua Umum', 'BPH', 'Pulang', '2023-06-29', '10:39:51');
 
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `tbpersonal`
+-- Table structure for table `tbpersonal`
 --
 
 CREATE TABLE `tbpersonal` (
@@ -101,30 +77,27 @@ CREATE TABLE `tbpersonal` (
   `Nama` varchar(30) NOT NULL,
   `Posisi` varchar(20) NOT NULL,
   `Mapel` varchar(20) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Dumping data untuk tabel `tbpersonal`
+-- Dumping data for table `tbpersonal`
 --
 
 INSERT INTO `tbpersonal` (`NIP`, `Nama`, `Posisi`, `Mapel`) VALUES
-('001', 'Ade Dwi Putra', 'Guru', 'Matematika'),
-('002', 'Junaedi Ahmad Basori', 'Guru', 'Bahasa Inggris'),
-('003', 'Dyta Puji Lestari', 'Guru', 'Bahasa Indonesia'),
-('004', 'Hasan Maulana', 'Guru', 'Agama');
+('001', 'Chandra', 'Ketua Umum', 'BPH');
 
 --
 -- Indexes for dumped tables
 --
 
 --
--- Indeks untuk tabel `tblogin`
+-- Indexes for table `tblogin`
 --
 ALTER TABLE `tblogin`
   ADD PRIMARY KEY (`username`);
 
 --
--- Indeks untuk tabel `tbpersonal`
+-- Indexes for table `tbpersonal`
 --
 ALTER TABLE `tbpersonal`
   ADD PRIMARY KEY (`NIP`);
