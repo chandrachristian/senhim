@@ -4,11 +4,17 @@ Aplikasi Absensi HIMSIKA berbasis GUI ini memiliki tampilan yang sederhana dan f
 
 ## Tampilan Aplikasi
 
+## Absensi Masuk
 ![ss](src/Image/1.jpeg)
+## Welcome
 ![ss](src/Image/2.jpeg)
+## Login
 ![ss](src/Image/3.jpeg)
+## Report
 ![ss](src/Image/4.jpeg)
+## Input Data
 ![ss](src/Image/5.jpeg)
+## Dashboard
 ![ss](src/Image/6.jpeg)
 
 ## Admin Account
