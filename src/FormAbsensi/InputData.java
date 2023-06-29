@@ -564,9 +564,14 @@ public class InputData extends javax.swing.JFrame {
     private void btnEditActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditActionPerformed
         // TODO add your handling code here:
         try {
-            java.sql.Connection conn = (java.sql.Connection)Konektor.Koneksi.getKoneksi();
-        conn.createStatement().executeUpdate("UPDATE tbPersonal SET Nama='"+txtNama.getText()+"',Posisi='"+cbPosisi.getSelectedItem()+"',Mapel='"+cbMapel.getSelectedItem()+
-                "'WHERE NIP='"+txtNIP.getText()+ "'");
+            java.sql.Connection conn = (java.sql.Connection) Konektor.Koneksi.getKoneksi();
+    String sql = "UPDATE tbPersonal SET Nama=?, Jabatan=?, Divisi=? WHERE NIP=?";
+    PreparedStatement pstmt = conn.prepareStatement(sql);
+    pstmt.setString(1, txtNama.getText());
+    pstmt.setString(2, cbPosisi.getSelectedItem().toString());
+    pstmt.setString(3, cbMapel.getSelectedItem().toString());
+    pstmt.setString(4, txtNIP.getText());
+    pstmt.executeUpdate();
         
         TampilData();
         Clear();
