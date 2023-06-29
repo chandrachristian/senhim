@@ -4,19 +4,21 @@ Aplikasi Absensi HIMSIKA berbasis GUI ini memiliki tampilan yang sederhana dan f
 
 ## Tampilan Aplikasi
 
-![ss](src/Image/Menu Dashboard.png)
-![ss](images/ss2.png)
-![ss](images/ss3.png)
-![ss](images/ss4.png)
-![ss](images/ss5.png)
+![ss](src/Image/1.jpeg)
+![ss](src/Image/2.jpeg)
+![ss](src/Image/3.jpeg)
+![ss](src/Image/4.jpeg)
+![ss](src/Image/5.jpeg)
+![ss](src/Image/6.jpeg)
 
 ## Admin Account
 
-| Level | Username | Password |
-| :---: | :------: | -------: |
-| Admin |  admin   |    admin |
+| Username   | Password   |
+| :------:   | -------:   |
+|  admin01   |    admin01 |
 
 ## Sistem Requirement
 
+- Apache Netbeans
 - Database MySQL
-- XAMPP / PHP 5.6
+- XAMPP / PHP 5.6+
