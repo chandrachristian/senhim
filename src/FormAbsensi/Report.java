@@ -161,6 +161,7 @@ private void Tampil(){
         jScrollPane1.setViewportView(jTable1);
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setIconImage(new javax.swing.ImageIcon(getClass().getResource("/Image/him200.png")).getImage());
 
         jPanel6.setBackground(new java.awt.Color(2, 47, 127));
         jPanel6.setPreferredSize(new java.awt.Dimension(700, 400));
@@ -336,7 +337,7 @@ private void Tampil(){
         jPanel6.setLayout(jPanel6Layout);
         jPanel6Layout.setHorizontalGroup(
             jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jTabbedPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 700, Short.MAX_VALUE)
+            .addComponent(jTabbedPane1)
             .addGroup(jPanel6Layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jButton4)
@@ -386,19 +387,6 @@ private void Tampil(){
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
         Cari();
-
-        /*    int row=model.getRowCount();
-        for(int i=0;i<row;i++){
-            model.removeRow(0);
-        } try {
-            Table.setModel(new DefaultTableModel(null, Object[]{"NIP","Nama","Posisi","Mapel","Tanggal_masuk"}));
-            SimpleDateFormat df = new SimpleDateFormat("yyy-MM-dd 00:00:00.0");
-            SimpleDateFormat dfm = new SimpleDateFormat("yyy-MM-dd 23:59:00.0");
-            String date1 = df.format(Tanggal1.getDate());
-            String date2 = dfm.format(Tanggal2.getDate());
-            showData(date1, date2);
-        } catch (Exception e) {
-        }*/
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void TablePropertyChange(java.beans.PropertyChangeEvent evt) {//GEN-FIRST:event_TablePropertyChange
