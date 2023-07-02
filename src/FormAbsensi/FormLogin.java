@@ -31,7 +31,7 @@ public class FormLogin extends javax.swing.JFrame {
 
         txtUser = new javax.swing.JTextField();
         txtPassword = new javax.swing.JPasswordField();
-        Keluar = new javax.swing.JLabel();
+        btnBack = new javax.swing.JButton();
         btnLogin = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
 
@@ -66,17 +66,20 @@ public class FormLogin extends javax.swing.JFrame {
         });
         getContentPane().add(txtPassword, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 190, 190, 20));
 
-        Keluar.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                KeluarMouseClicked(evt);
+        btnBack.setBackground(new java.awt.Color(153, 153, 153));
+        btnBack.setFont(new java.awt.Font("Times New Roman", 1, 12)); // NOI18N
+        btnBack.setText("Back");
+        btnBack.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnBackActionPerformed(evt);
             }
         });
-        Keluar.addKeyListener(new java.awt.event.KeyAdapter() {
+        btnBack.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
-                KeluarKeyPressed(evt);
+                btnBackKeyPressed(evt);
             }
         });
-        getContentPane().add(Keluar, new org.netbeans.lib.awtextra.AbsoluteConstraints(574, 0, 20, 20));
+        getContentPane().add(btnBack, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 240, -1, -1));
 
         btnLogin.setBackground(new java.awt.Color(153, 153, 153));
         btnLogin.setFont(new java.awt.Font("Times New Roman", 1, 12)); // NOI18N
@@ -92,7 +95,7 @@ public class FormLogin extends javax.swing.JFrame {
                 btnLoginKeyPressed(evt);
             }
         });
-        getContentPane().add(btnLogin, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 240, 100, -1));
+        getContentPane().add(btnLogin, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 240, 100, -1));
 
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/sign in.png"))); // NOI18N
@@ -105,11 +108,6 @@ public class FormLogin extends javax.swing.JFrame {
     private void txtUserActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtUserActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtUserActionPerformed
-
-    private void KeluarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_KeluarMouseClicked
-        // TODO add your handling code here:
-        System.exit(0);
-    }//GEN-LAST:event_KeluarMouseClicked
 
     private void txtUserKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtUserKeyPressed
         // TODO add your handling code here:
@@ -179,10 +177,17 @@ public class FormLogin extends javax.swing.JFrame {
             }
     }//GEN-LAST:event_btnLoginActionPerformed
 
-    private void KeluarKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_KeluarKeyPressed
+    private void btnBackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBackActionPerformed
         // TODO add your handling code here:
-        System.exit(0);
-    }//GEN-LAST:event_KeluarKeyPressed
+        new Welcome().show();
+        this.dispose();
+    }//GEN-LAST:event_btnBackActionPerformed
+
+    private void btnBackKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_btnBackKeyPressed
+        // TODO add your handling code here:
+        new Welcome().show();
+        this.dispose();
+    }//GEN-LAST:event_btnBackKeyPressed
 
     /**
      * @param args the command line arguments
@@ -220,7 +225,7 @@ public class FormLogin extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JLabel Keluar;
+    private javax.swing.JButton btnBack;
     private javax.swing.JButton btnLogin;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JPasswordField txtPassword;

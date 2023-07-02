@@ -278,8 +278,8 @@ public class AbsensiMasuk extends javax.swing.JFrame {
                                 .addComponent(lbjam)
                                 .addGap(128, 128, 128)
                                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(txtNIP, javax.swing.GroupLayout.PREFERRED_SIZE, 229, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(cbAbsen, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addComponent(cbAbsen, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(txtNIP, javax.swing.GroupLayout.PREFERRED_SIZE, 229, javax.swing.GroupLayout.PREFERRED_SIZE))
                                 .addGap(0, 0, Short.MAX_VALUE)))))
                 .addContainerGap())
         );
@@ -383,7 +383,7 @@ public class AbsensiMasuk extends javax.swing.JFrame {
 
     private void txtNIPKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtNIPKeyPressed
         // TODO add your handling code here:
-if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
+    if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
     String nip = txtNIP.getText();
     if (nip.isEmpty()) {
         foto.setVisible(false);
@@ -423,7 +423,6 @@ if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
         }
     }
 }
-
     }//GEN-LAST:event_txtNIPKeyPressed
 
     private void jLabel2KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jLabel2KeyPressed
