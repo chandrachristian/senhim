@@ -32,41 +32,6 @@ DefaultTableModel  model;
         
     }
     
-   /* public void tampildata(String d1, String d2) throws SQLException{
-        Connection conn= Konektor.Koneksi.getKoneksi();
-        PreparedStatement pst;
-        ResultSet rs;
-        
-        try {
-            if(d1.equals("") || d2.equals("")){
-                pst=conn.prepareStatement("select * from tbmasuk");
-            }else{
-                pst=conn.prepareStatement("select * from tbmasuk where NIP AND Tanggal_masuk BETWEEN ? AND ?");
-                pst.setString(1, d1);
-                pst.setString(2, d2);
-            }
-            
-            rs=pst.executeQuery();
-            DefaultTableModel model= (DefaultTableModel)Table.getModel();
-            
-            Object[]row;
-            
-            while (rs.next()) {
-                row = new Object[5];
-                row[0] = rs.getInt(1);
-                row[1] = rs.getString(2);
-                row[2] = rs.getString(3);
-                row[3] = rs.getString(4);
-                row[4] = rs.getString(5);
-                
-                model.addRow(row);
-            }
-            
-        } catch (Exception e) {
-            System.out.println(e.getMessage());
-        }
-    }*/
- 
     private void CariData(){
         DefaultTableModel tbl = new DefaultTableModel();
         tbl.addColumn("NIP");
