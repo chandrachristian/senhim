@@ -8,7 +8,6 @@ package FormAbsensi;
 
 import static FormAbsensi.Dashboard.nama;
 import java.awt.event.KeyEvent;
-import java.awt.Color;
 import java.sql.Connection;
 import javax.swing.JOptionPane;
         

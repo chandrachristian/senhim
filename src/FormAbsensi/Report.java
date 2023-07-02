@@ -6,24 +6,14 @@
 
 package FormAbsensi;
 
-import Konektor.Koneksi;
 import java.awt.HeadlessException;
-import java.io.File;
 import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.text.SimpleDateFormat;
-import java.util.HashMap;
 import javax.swing.table.DefaultTableModel;
 import net.proteanit.sql.DbUtils;
-import net.sf.jasperreports.engine.JasperFillManager;
-import net.sf.jasperreports.engine.JasperPrint;
-import net.sf.jasperreports.engine.JasperReport;
-import net.sf.jasperreports.engine.util.JRLoader;
-import net.sf.jasperreports.view.JasperViewer;
 
 /**
  *
